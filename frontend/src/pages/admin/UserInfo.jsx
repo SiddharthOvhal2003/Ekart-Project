@@ -54,7 +54,7 @@ const UserInfo = () => {
       }
 
       const res = await axios.put(
-        `http://localhost:8000/api/v1/user/update/${userId}`,
+        `${import.meta.env.VITE_URL}/api/v1/user/update/${userId}`,
         formData,
         {
           headers: {
@@ -86,7 +86,7 @@ const UserInfo = () => {
 
   const getUserDetails = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/v1/user/get-user/${userId}`)
+      const res = await axios.get(`${import.meta.env.VITE_URL}/api/v1/user/get-user/${userId}`)
       if (res.data.success) {
         setUserDetails(res.data.user)
         setUpdateUser(res.data.user)  // ✅ set form values after fetch

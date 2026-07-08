@@ -66,7 +66,7 @@ const AddressForm = () => {
   //   try {
   //     // Step 1: Create order on backend
   //     console.log({ tax, shipping, total, products: cart?.items });
-  //     const { data } = await axios.post("http://localhost:8000/api/v1/orders/create-order", {
+  //     const { data } = await axios.post("${import.meta.env.VITE_URL}/api/v1/orders/create-order", {
   //       products: cart?.items?.map(item => ({
   //         productId: item.productId._id,   // rename _id to productId
   //         quantity: item.quantity,
@@ -95,7 +95,7 @@ const AddressForm = () => {
   //         console.log('response', response);
 
   //         // Step 3: Verify payment
-  //         const verifyRes = await axios.post("http://localhost:8000/api/v1/orders/verify-payment", response, {
+  //         const verifyRes = await axios.post("${import.meta.env.VITE_URL}/api/v1/orders/verify-payment", response, {
   //           headers: {
   //             Authorization: `Bearer ${accessToken}`
   //           }
@@ -129,7 +129,7 @@ const AddressForm = () => {
  const handlePayment = async () => {
   try {
     const { data } = await axios.post(
-      "http://localhost:8000/api/v1/orders/create-order",
+      "${import.meta.env.VITE_URL}/api/v1/orders/create-order",
       {
         products: cart?.items?.map(item => ({
           productId: item.productId._id,
@@ -162,7 +162,7 @@ const AddressForm = () => {
       handler: async function (response) {
         try {
           const verifyRes = await axios.post(
-            "http://localhost:8000/api/v1/orders/verify-payment",
+            "${import.meta.env.VITE_URL}/api/v1/orders/verify-payment",
             {
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
@@ -194,7 +194,7 @@ const AddressForm = () => {
         ondismiss: async function () {
           try {
             await axios.post(
-              "http://localhost:8000/api/v1/orders/verify-payment",
+              "${import.meta.env.VITE_URL}/api/v1/orders/verify-payment",
               {
                 razorpay_order_id: data.order.id,
                 paymentFailed: true,
@@ -230,7 +230,7 @@ const AddressForm = () => {
     rzp.on("payment.failed", async function () {
       try {
         await axios.post(
-          "http://localhost:8000/api/v1/orders/verify-payment",
+          "${import.meta.env.VITE_URL}/api/v1/orders/verify-payment",
           {
             razorpay_order_id: data.order.id,
             paymentFailed: true,
