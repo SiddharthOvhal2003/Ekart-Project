@@ -29,7 +29,7 @@ const AdminSales = () => {
     try {
       const token = localStorage.getItem("accessToken");
       const res = await axios.get(
-        "${import.meta.env.VITE_URL}/api/v1/orders/sales",
+        `${import.meta.env.VITE_URL}/api/v1/orders/sales`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }

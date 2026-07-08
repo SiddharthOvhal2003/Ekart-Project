@@ -18,7 +18,7 @@ export const verifyEmail = (token, email)=>{
         text: `Hi! There, You have recently visited 
                our website and entered your email.
                Please follow the given link to verify your email
-               http://localhost:5173/verify/${token} 
+              ${process.env.FRONTEND_URL}/verify/${token} 
                Thanks`
     };
     

@@ -20,7 +20,7 @@ const Cart = () => {
   const tax = subtotal * 0.05  // example 5%
   const total = subtotal + shipping + tax;
 
-  const API = "${import.meta.env.VITE_URL}/api/v1/cart";
+  const API = `${import.meta.env.VITE_URL}/api/v1/cart`;
   const accessToken = localStorage.getItem("accessToken");
 
   const loadCart = async () => {
