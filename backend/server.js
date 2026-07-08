@@ -14,9 +14,13 @@ const PORT=process.env.PORT || 3000
 app.use(express.json())
 
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:process.env.FRONTEND_URL,
     credentials:true    
 }))
+
+app.get("/", (req, res) => {
+  res.send("EKART Backend is Running 🚀");
+});
 
 app.use('/api/v1/user',userRoute)
 app.use('/api/v1/product', productRoute)
